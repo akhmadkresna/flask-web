@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0f1115">
+<title>Cast to TV</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header><h1>📺 Cast to TV</h1></header>
+<main>
+  <section class="card">
+    <div class="row">
+      <select id="device"></select>
+      <button id="scan" class="ghost">Scan</button>
+    </div>
+    <p id="devmsg" class="muted"></p>
+    <details><summary>TV not found?</summary>
+      <div class="row">
+        <input id="manual" placeholder="http://TV_IP:PORT/description.xml">
+        <button id="addManual" class="ghost">Add</button>
+      </div>
+    </details>
+  </section>
+
+  <section class="card" id="player" hidden>
+    <div id="now" class="muted">Nothing playing</div>
+    <input type="range" id="seek" min="0" max="100" value="0">
+    <div class="row between"><span id="pos">0:00</span><span id="dur">0:00</span></div>
+    <div class="row center">
+      <button id="back" class="ghost">−10s</button>
+      <button id="pp" class="big">▶</button>
+      <button id="fwd" class="ghost">+10s</button>
+      <button id="stop" class="ghost">■</button>
+    </div>
+    <label class="row">🔊 <input type="range" id="vol" min="0" max="100" value="20"></label>
+  </section>
+
+  <section class="card">
+    <h2>Cast from this phone</h2>
+    <label class="upload">Choose a video from your phone
+      <input type="file" id="file" accept="video/*" hidden>
+    </label>
+    <progress id="prog" value="0" max="100" hidden></progress>
+    <h2>Cast a video link</h2>
+    <div class="row">
+      <input id="url" placeholder="https://…/video.mp4" inputmode="url">
+      <button id="castUrl">Cast</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Library</h2>
+    <ul id="lib"></ul>
+  </section>
+  <p id="toast"></p>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>
